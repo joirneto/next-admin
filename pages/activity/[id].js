@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Logout from "@/components/Logout";
 import { useRouter } from 'next/router';
+import ButtonHome from "@/components/ButtonHome";
 
 export default function EditarAtividade() {
   const router = useRouter();
@@ -62,6 +63,7 @@ export default function EditarAtividade() {
   };
   return (
     <>
+    <ButtonHome/>
       <Logout />
       <Card className="max-w-md mx-auto my-20">
         <CardHeader className="space-y-2">
