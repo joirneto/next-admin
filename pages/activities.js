@@ -24,6 +24,7 @@ import LoadingSpinner from "@/components/Loading";
 export default function Activities() {
   const router = useRouter();
   const [activities, setActivities] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const handleEditar = (id) => {
@@ -51,8 +52,8 @@ export default function Activities() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
+        setRefresh((old) => !old);
         setLoading(false);
-        router.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -61,6 +62,7 @@ export default function Activities() {
   };
 
   useEffect(() => {
+    setLoading(true);
     const token = JSON.parse(localStorage.getItem("orlaclub_user"));
     if (!token) {
       router.push("/");
@@ -78,7 +80,7 @@ export default function Activities() {
         console.log(err);
         handleLogout();
       });
-  }, []);
+  }, [refresh]);
   return (
     <>
       <Logout />
