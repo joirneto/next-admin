@@ -1,6 +1,6 @@
 # Next-Admin
 
-Administrative management application.
+Administrative management application with login and management page.
 
 ## Getting Started
 
