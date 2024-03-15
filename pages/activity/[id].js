@@ -16,16 +16,16 @@ export default function EditarAtividade() {
   const [describe, setDescribe] = useState("");
 
   useEffect(() => {
-    const user = localStorage.getItem("orlaclub_user");
+    const user = localStorage.getItem("admin_user");
     if (!user) {
       router.push("/");
     }
   }, []);
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("orlaclub_user"));
+    const token = JSON.parse(localStorage.getItem("admin_user"));
     axios
-      .get("https://api-orlaclub.vercel.app/api/admin/activities/" + id, {
+      .get("https://url-sua-api.vercel.app/api/admin/activities/" + id, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -38,15 +38,15 @@ export default function EditarAtividade() {
       });
   },[])
   const handleLogout = () => {
-    localStorage.removeItem("orlaclub_user");
+    localStorage.removeItem("admin_user");
     router.push("/");
   };
   const handleEditarAtividade = async (event) => {
     event.preventDefault();
-    const token = JSON.parse(localStorage.getItem("orlaclub_user"));
+    const token = JSON.parse(localStorage.getItem("admin_user"));
     try {
       await axios.patch(
-        "https://api-orlaclub.vercel.app/api/admin/activities/"+id,
+        "https://url-sua-api.vercel.app/api/admin/activities/"+id,
         {
           activity,
           describe,

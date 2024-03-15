@@ -22,7 +22,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const user = localStorage.getItem("orlaclub_user");
+    const user = localStorage.getItem("admin_user");
     if (user) {
       router.push("/activities");
     }
@@ -41,11 +41,11 @@ export default function Login() {
 
   const handleLogin = async () => {
     setLoading(true);
-    const url = "https://api-orlaclub.vercel.app/api/";
+    const url = "https://url-sua-api.vercel.app/api/";
     try {
       const response = await axios.post(url + "auth", { email, password });
       localStorage.setItem(
-        "orlaclub_user",
+        "admin_user",
         JSON.stringify(response.data.access_token)
       );
       setLoading(false);

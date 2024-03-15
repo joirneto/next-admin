@@ -17,16 +17,16 @@ export default function NovaAtividade() {
   const [loading, setLoading] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem("orlaclub_user");
+    localStorage.removeItem("admin_user");
     router.push("/");
   };
   const handleNovaAtividade = async (event) => {
     setLoading(true);
     event.preventDefault();
-    const token = JSON.parse(localStorage.getItem("orlaclub_user"));
+    const token = JSON.parse(localStorage.getItem("admin_user"));
     try {
       await axios.post(
-        "https://api-orlaclub.vercel.app/api/admin/activities/",
+        "https://url-sua-api.vercel.app/api/admin/activities/",
         {
           activity,
           describe,

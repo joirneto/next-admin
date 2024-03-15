@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 export default function Logout() {
   const router = useRouter();
   const handleLogout = () => {
-    localStorage.removeItem("orlaclub_user");
+    localStorage.removeItem("admin_user");
     router.push("/");
   };
 
